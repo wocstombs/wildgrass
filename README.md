@@ -97,10 +97,10 @@ wildgrass --help
 
 ## Known Issues and Fixes
 
-### Audio Dropouts on WSL2
+### Audio Dropouts on WSL
   - If you experience periodic audio dropouts or micro-stutters every few seconds across audio players (you can tell from `mpv` logging `Audio device underrun detected`), it's because:
 
-    - Under WSL2, Windows Hyper-V host time synchronisation speeds up the Linux kernel clock (running ~2.6% fast), while `systemd-timesyncd` periodically pulls the clock backwards by ~1 second. This step-back disrupts PulseAudio/PipeWire audio timing buffers.
+    - Under WSL, Windows Hyper-V host time synchronisation speeds up the Linux kernel clock (running ~2.6% fast), while `systemd-timesyncd` periodically pulls the clock backwards by ~1 second. This jittering disrupts the PulseAudio/PipeWire audio timing quite noticeably.
     - **Fix**: Disable the redundant `systemd-timesyncd` daemon and let WSL sync directly with host time:
 
   ```bash
