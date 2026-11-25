@@ -75,7 +75,7 @@ pub fn default_stations() -> Vec<Station> {
 }
 ```
 
-Don't worry though, your stations can be fully customised inside the app.
+Don't worry though, your stations can be fully customised inside the app later.
 
 
 ## Keybinds
