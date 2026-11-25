@@ -51,7 +51,7 @@ cargo install wildgrass
 
 ## Configuration
 
-Your default stations exist in [stations.rs](https://github.com/wocstombs/wildgrass/blob/main/src/station.rs), as a list of station names and links. It looks like this:
+Your default stations exist in [station.rs](https://github.com/wocstombs/wildgrass/blob/main/src/station.rs), as a list of station names and links. It looks like this:
 
 ```rust
 pub fn default_stations() -> Vec<Station> {
