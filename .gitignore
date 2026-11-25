@@ -1,0 +1,13 @@
+# Rust build artifacts
+/target
+
+# Environment variables and secrets
+.env
+
+# Temporary audio and socket files
+*.mp3
+*.sock
+
+# Editor and OS files
+*.swp
+.DS_Store

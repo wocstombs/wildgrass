@@ -1,0 +1,61 @@
+[package]
+name = "wildgrass"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.91"
+description = "Minimal terminal internet radio player with real-time song recognition and synchronized lyrics"
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/wocstombs/wildgrass"
+homepage = "https://github.com/wocstombs/wildgrass"
+keywords = ["radio", "tui", "ratatui", "shazam", "lyrics"]
+categories = ["command-line-utilities", "multimedia::audio"]
+include = [
+    "/src/**",
+    "/Cargo.toml",
+    "/Cargo.lock",
+    "/LICENSE",
+    "/README.md",
+]
+
+[dependencies]
+base64 = "0.22"
+crc32fast = "1.4"
+crossterm = "0.28"
+flate2 = "1.0"
+ratatui = "0.29"
+realfft = "3.4"
+regex = "1.11"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "gzip", "deflate"] }
+rustfft = "6.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.40", features = ["full"] }
+urlencoding = "2.1"
+uuid = { version = "1.10", features = ["v4"] }
+x11rb = { version = "0.14", features = ["randr"] }
+
+[target.'cfg(windows)'.dependencies]
+# Captures mpv's own output (process loopback), as parec does on Linux
+wasapi = "0.27"
+# Tells whether wildgrass runs in a Windows Terminal tab (terminal/windows_terminal.rs), types into
+# its console (terminal/profile.rs), and reads mpv's named pipe (player/ipc/windows.rs)
+windows-sys = { version = "0.61", features = ["Win32_System_Console", "Win32_System_Pipes", "Win32_UI_WindowsAndMessaging"] }
+
+# Google Rust style. `unsafe_code` is `deny` rather than `forbid`: this one crate also holds the
+# three Windows calls that need `unsafe`, and each of them takes an `#[expect]` saying why.
+[lints.rust]
+unsafe_code = "deny"
+unstable_features = "deny"
+
+[lints.clippy]
+ref_option = "deny"
+unwrap_used = "deny"
+wildcard_imports = "deny"
+needless_for_each = "deny"
+undocumented_unsafe_blocks = "deny"
+derive_partial_eq_without_eq = "allow"
+missing_const_for_fn = "allow"
+# Google style names a leaf module after its primary item, so `playback/playback.rs` holds
+# `Playback`, which `playback/mod.rs` re-exports
+module_inception = "allow"

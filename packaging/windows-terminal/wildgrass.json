@@ -1,0 +1,15 @@
+{
+  "profiles": [
+    {
+      "name": "wildgrass",
+      "commandline": "wildgrass.exe",
+      "tabTitle": "wildgrass",
+      "suppressApplicationTitle": true,
+      "font": { "face": "Ubuntu Mono", "size": 13 },
+      "colorScheme": "IBM 5153",
+      "opacity": 85,
+      "scrollbarState": "hidden",
+      "cursorShape": "filledBox"
+    }
+  ]
+}

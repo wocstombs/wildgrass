@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+    branches: [master, main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  check:
+    name: Format, Clippy & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        # The audio capture test decodes a generated WAV file with it
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Cache Cargo registry and target
+        uses: Swatinem/rust-cache@v2
+
+      - name: Check formatting
+        run: cargo fmt --all -- --check
+
+      - name: Run Clippy lints
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Run unit tests
+        run: cargo test --verbose
+
+  windows:
+    # wildgrass also runs natively on Windows (in PowerShell or any other console); this job
+    # builds and tests it there
+    name: Windows Clippy & Test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        # The audio capture test decodes a generated WAV file with it
+        run: choco install ffmpeg -y --no-progress
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - name: Cache Cargo registry and target
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run Clippy lints
+        run: cargo clippy --all-targets -- -D warnings
+
+      - name: Run unit tests
+        run: cargo test --verbose
