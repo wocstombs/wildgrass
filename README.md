@@ -13,7 +13,7 @@ If it's your first time running, remember to close your old terminal sessions an
 
 ### Windows
 
-You can download and run `wildgrass-setup.exe` from the Releases page.
+You can download and run `wildgrass-setup.exe` from the [Releases](https://github.com/wocstombs/wildgrass/releases) page.
 
 **Winget**
 
