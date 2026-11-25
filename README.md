@@ -124,7 +124,7 @@ wildgrass --help
 - **ffmpeg** works as a backup to `mpv` when it acts up.
 - **yt-dlp** allows YouTube live stream radios to be added.
 
-If you're hoping for a more lightweight experience, I heavily recommend the awesome [radio-cli](https://github.com/margual56/radio-cli). 
+If you're hoping for a more lightweight experience, I heavily recommend [radio-cli](https://github.com/margual56/radio-cli). It's a great app on its own. I "borrowed" a lot of design elements from it, too.
 
 ## AI Disclosure
 
