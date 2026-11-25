@@ -7,7 +7,7 @@ A minimalist CLI for internet radio, written 100% in Rust. It blends perfectly i
 ```bash
 wildgrass
 ```
-Remember to close your old terminal sessions and start a new one if it's your first time running.
+If it's your first time running, remember to close your old terminal sessions and start a new one.
 
 ## How Do I Install
 
@@ -32,9 +32,9 @@ See *[installation priority](#installation-priority)* for further information on
 **Ubuntu / Debian / Mint:**
 
 ```bash
-sudo apt install mpv yt-dlp ffmpeg pulseaudio-utils
+sudo apt install build-essential curl mpv yt-dlp ffmpeg pulseaudio-utils
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-cargo install wildgrass
+source "$HOME/.cargo/env" && cargo install wildgrass
 ```
 
 **Arch:**
@@ -70,7 +70,7 @@ Cross-compiling from WSL with MinGW (`sudo apt install mingw-w64` and `rustup ta
 
 ```bash
 cargo build --release --target x86_64-pc-windows-gnu
-# then, in PowerShell: \\wsl.localhost\<distro>\<path to wildgrass>\target\x86_64-pc-windows-gnu\release\wildgrass.exe
+# then, in Powershell: \\wsl.localhost\<distro>\<path to wildgrass>\target\x86_64-pc-windows-gnu\release\wildgrass.exe
 ```
 
 ## Configuration
@@ -94,16 +94,16 @@ Custom stations can be added in `$XDG_CONFIG_HOME/wildgrass/stations.json` (or `
 ]
 ```
 
-## Keybindings
+## Keybinds
 
 The only two keybinds that are functionally important but kind of hard to figure out on your own are:
 
 | Key | Action |
 | --- | --- |
-| `t` | Cycles wildgrass on top of all windows, on the bottom, or normally |
+| `t` | Cycles wildgrass on top of all windows, on the bottom of all windows, or normally |
 | `Ctrl+C` | Exit immediately |
 
-*Note: Unfortunately `t` (and moving the radio around using `↑ ↓ ← →`) only works on Windows, WSL, and Linux X11*
+*Note: Unfortunately `t` (and move window while playing using `↑ ↓ ← →`) only works on Windows, WSL, and Linux X11*
 
 Everything else should feel natural. Explore around! If you're ever stuck, type in a new terminal
 
@@ -148,7 +148,7 @@ If you experience periodic audio dropouts or micro-stutters every few seconds ac
 - **ffmpeg** works as a backup to `mpv` when it acts up.
 - **yt-dlp** allows YouTube live stream radios to be added.
 
-If you're hoping for a more lightweight experience, I would recommend [radio-cli](https://github.com/margual56/radio-cli) , an awesome app wildgrass is directly inspired from.
+If you're hoping for a more lightweight experience, I recommend [radio-cli](https://github.com/margual56/radio-cli), an awesome app wildgrass is directly inspired from.
 
 ## AI Disclosure
 
